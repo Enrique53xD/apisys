@@ -1,0 +1,31 @@
+/* ===== PAGE TRANSITION ===== */
+.page-transition {
+    animation: pageEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pageEnter {
+    0% {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .page-transition {
+        animation: pageFadeOnly 0.2s ease both;
+    }
+
+    @keyframes pageFadeOnly {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
