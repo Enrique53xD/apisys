@@ -42,7 +42,6 @@ export default function Contacto() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     alert("¡Gracias por contactarnos! Te responderemos pronto.");
     setFormData({ name: "", email: "", phone: "", message: "" });
     setCharCount(0);

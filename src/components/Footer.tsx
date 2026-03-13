@@ -46,6 +46,7 @@ export default function Footer() {
                     src={apisysLogo}
                     alt="APISYS"
                     className="footer__logo-img"
+                    loading="lazy"
                   />
                 </div>
               </Link>

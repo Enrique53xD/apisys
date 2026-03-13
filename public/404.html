@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>404 — Página no encontrada | APISYS</title>
+        <meta name="robots" content="noindex" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Source+Sans+3:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg: #0a0a0f;
+                --bg-card: rgba(14, 14, 22, 0.92);
+                --text-primary: #fafcfe;
+                --text-secondary: #bed9e8;
+                --text-muted: #6999b6;
+                --text-dim: #4a5568;
+                --accent: #6999b6;
+                --accent-light: #bed9e8;
+                --dark-blue: #172446;
+                --border: rgba(105, 153, 182, 0.15);
+                --font-heading: "Montserrat", sans-serif;
+                --font-body: "Source Sans 3", sans-serif;
+                --font-mono: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+            }
+
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                font-size: 16px;
+                -webkit-font-smoothing: antialiased;
+                overflow-x: hidden;
+            }
+
+            body {
+                font-family: var(--font-body);
+                background: var(--bg);
+                color: var(--text-primary);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 24px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Grid pattern */
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image:
+                    linear-gradient(rgba(105, 153, 182, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(105, 153, 182, 0.03) 1px, transparent 1px);
+                background-size: 60px 60px;
+                mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+                -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* Radial glow overlay */
+            body::after {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: radial-gradient(
+                    ellipse 70% 60% at 50% 30%,
+                    rgba(23, 36, 70, 0.6) 0%,
+                    transparent 60%
+                );
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* Orbs */
+            .orb {
+                position: fixed;
+                border-radius: 50%;
+                filter: blur(80px);
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .orb--1 {
+                width: 500px;
+                height: 500px;
+                top: -12%;
+                left: -8%;
+                background: rgba(23, 36, 70, 0.7);
+                opacity: 0.25;
+                animation: float 10s ease-in-out infinite;
+            }
+
+            .orb--2 {
+                width: 400px;
+                height: 400px;
+                bottom: -15%;
+                right: -8%;
+                background: rgba(105, 153, 182, 0.18);
+                opacity: 0.2;
+                animation: float 10s ease-in-out infinite;
+                animation-delay: -5s;
+            }
+
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-14px); }
+            }
+
+            /* ===== MAIN CONTENT ===== */
+            .page {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                max-width: 620px;
+                width: 100%;
+                animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            }
+
+            @keyframes fadeUp {
+                from { opacity: 0; transform: translateY(32px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+
+            /* ===== LOGO ===== */
+            .logo-link {
+                display: inline-flex;
+                margin-bottom: 36px;
+                text-decoration: none;
+            }
+
+            .logo-mark {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 6px 14px;
+                border-radius: 10px;
+                background: rgba(240, 245, 250, 0.92);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                box-shadow:
+                    0 2px 12px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+                transition: all 0.3s ease;
+                line-height: 0;
+            }
+
+            .logo-mark:hover {
+                background: rgba(255, 255, 255, 0.97);
+                box-shadow:
+                    0 4px 20px rgba(105, 153, 182, 0.25),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                transform: translateY(-1px);
+            }
+
+            .logo-mark img {
+                height: 28px;
+                width: auto;
+                display: block;
+            }
+
+            /* ===== 404 NUMBER ===== */
+            .code {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                margin-bottom: 16px;
+                user-select: none;
+            }
+
+            .code-num {
+                font-family: var(--font-heading);
+                font-size: clamp(5rem, 14vw, 9rem);
+                font-weight: 900;
+                line-height: 1;
+                letter-spacing: -0.04em;
+                background: linear-gradient(
+                    180deg,
+                    var(--accent-light) 0%,
+                    var(--accent) 60%,
+                    rgba(105, 153, 182, 0.3) 100%
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .code-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: clamp(60px, 10vw, 92px);
+                height: clamp(60px, 10vw, 92px);
+                border-radius: 50%;
+                border: 2px solid rgba(105, 153, 182, 0.2);
+                background: rgba(105, 153, 182, 0.06);
+                color: var(--accent);
+                animation: float 4s ease-in-out infinite;
+                flex-shrink: 0;
+            }
+
+            /* ===== GLITCH LINE ===== */
+            .glitch-line {
+                width: 110px;
+                height: 3px;
+                border-radius: 2px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--accent),
+                    var(--accent-light),
+                    var(--accent),
+                    transparent
+                );
+                margin: 0 auto 28px;
+                box-shadow: 0 0 14px rgba(105, 153, 182, 0.35);
+                animation: glitch 3s ease-in-out infinite;
+            }
+
+            @keyframes glitch {
+                0%, 100% { opacity: 1; transform: scaleX(1); }
+                50%       { opacity: 0.7; transform: scaleX(0.85); }
+                52%       { opacity: 1; transform: scaleX(1.08); }
+                54%       { transform: scaleX(1); }
+            }
+
+            /* ===== TEXT ===== */
+            .page h1 {
+                font-family: var(--font-heading);
+                font-size: clamp(1.4rem, 3.5vw, 2rem);
+                font-weight: 800;
+                color: var(--text-primary);
+                margin-bottom: 12px;
+                letter-spacing: -0.01em;
+            }
+
+            .page p {
+                font-size: 1.02rem;
+                color: var(--text-muted);
+                line-height: 1.7;
+                max-width: 440px;
+                margin: 0 auto 36px;
+            }
+
+            /* ===== TERMINAL ===== */
+            .terminal {
+                width: 100%;
+                max-width: 520px;
+                margin: 0 auto 40px;
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                overflow: hidden;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                text-align: left;
+                box-shadow:
+                    0 20px 60px rgba(0, 0, 0, 0.4),
+                    0 0 0 1px rgba(105, 153, 182, 0.05);
+            }
+
+            .terminal-header {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 18px;
+                background: rgba(255, 255, 255, 0.03);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+            }
+
+            .dot--red    { background: #ff5f57; }
+            .dot--yellow { background: #febc2e; }
+            .dot--green  { background: #28c840; }
+
+            .terminal-body {
+                padding: 18px 22px;
+                font-family: var(--font-mono);
+                font-size: 0.83rem;
+                line-height: 1.85;
+                color: var(--text-secondary);
+            }
+
+            .terminal-body p { margin: 0; word-break: break-all; }
+
+            .t-prompt { color: #28c840; font-weight: 600; margin-right: 2px; }
+            .t-cmd    { color: #82aaff; }
+            .t-url    { color: var(--text-dim); font-size: 0.78rem; }
+            .t-err    { color: #ff6b6b; padding: 2px 0; }
+            .t-cursor {
+                display: inline-block;
+                color: var(--accent-light);
+                animation: blink 1s steps(2, start) infinite;
+            }
+
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50%       { opacity: 0; }
+            }
+
+            /* ===== PRIMARY BUTTON ===== */
+            .btn-primary {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 14px 32px;
+                border-radius: 8px;
+                font-family: var(--font-heading);
+                font-size: 0.88rem;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                text-decoration: none;
+                background: linear-gradient(135deg, var(--accent), var(--dark-blue));
+                color: var(--text-primary);
+                box-shadow: 0 4px 20px rgba(105, 153, 182, 0.25);
+                transition: all 0.3s ease;
+                border: none;
+                cursor: pointer;
+            }
+
+            .btn-primary:hover {
+                background: linear-gradient(135deg, var(--accent-light), var(--accent));
+                color: var(--dark-blue);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(105, 153, 182, 0.35);
+            }
+
+            /* ===== PAGE LINKS ===== */
+            .links {
+                margin-top: 32px;
+                padding-top: 24px;
+                border-top: 1px solid var(--border);
+            }
+
+            .links-label {
+                font-family: var(--font-heading);
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--text-dim);
+                margin-bottom: 14px;
+            }
+
+            .links-list {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .link {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 7px 16px;
+                border-radius: 8px;
+                font-family: var(--font-heading);
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: var(--text-muted);
+                text-decoration: none;
+                background: rgba(105, 153, 182, 0.06);
+                border: 1px solid rgba(105, 153, 182, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .link:hover {
+                color: var(--accent-light);
+                background: rgba(105, 153, 182, 0.12);
+                border-color: rgba(105, 153, 182, 0.25);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 14px rgba(105, 153, 182, 0.1);
+            }
+
+            /* ===== RESPONSIVE ===== */
+            @media (max-width: 480px) {
+                body { padding: 16px; }
+
+                .code { gap: 10px; }
+
+                .page p { font-size: 0.95rem; }
+
+                .terminal-body {
+                    font-size: 0.76rem;
+                    padding: 14px 16px;
+                }
+
+                .links-list {
+                    flex-direction: column;
+                    gap: 6px;
+                }
+
+                .link {
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                .btn-primary {
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+
+            @media (max-width: 360px) {
+                .logo-mark img { height: 24px; }
+                .logo-mark { padding: 5px 10px; }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Background orbs -->
+        <div class="orb orb--1"></div>
+        <div class="orb orb--2"></div>
+
+        <div class="page">
+            <!-- Logo -->
+            <a href="/" class="logo-link" aria-label="APISYS — Volver al inicio">
+                <div class="logo-mark">
+                    <img src="/apisys-logo.png" alt="APISYS" />
+                </div>
+            </a>
+
+            <!-- 404 Code -->
+            <div class="code" aria-label="Error 404">
+                <span class="code-num">4</span>
+                <div class="code-icon" aria-hidden="true">
+                    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.35-4.35" />
+                    </svg>
+                </div>
+                <span class="code-num">4</span>
+            </div>
+
+            <div class="glitch-line" aria-hidden="true"></div>
+
+            <h1>Página no encontrada</h1>
+            <p>Lo sentimos, la página que buscas no existe o ha sido movida. Verifica la URL o regresa al inicio.</p>
+
+            <!-- Terminal -->
+            <div class="terminal" aria-hidden="true">
+                <div class="terminal-header">
+                    <span class="dot dot--red"></span>
+                    <span class="dot dot--yellow"></span>
+                    <span class="dot dot--green"></span>
+                </div>
+                <div class="terminal-body">
+                    <p>
+                        <span class="t-prompt">$</span>
+                        <span class="t-cmd"> curl </span>
+                        <span class="t-url" id="current-url"></span>
+                    </p>
+                    <p class="t-err">Error 404: No se encontró el recurso solicitado.</p>
+                    <p>
+                        <span class="t-prompt">$</span>
+                        <span class="t-cursor">_</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <a href="/" class="btn-primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                VOLVER AL INICIO
+            </a>
+
+            <!-- Quick links -->
+            <div class="links">
+                <p class="links-label">O visita alguna de estas páginas</p>
+                <div class="links-list">
+                    <a href="/soluciones" class="link">← Soluciones</a>
+                    <a href="/nosotros" class="link">← Nosotros</a>
+                    <a href="/contacto" class="link">← Contacto</a>
+                    <a href="/empezar" class="link">← Empezar</a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const el = document.getElementById("current-url");
+            if (el) el.textContent = window.location.href;
+        </script>
+    </body>
+</html>

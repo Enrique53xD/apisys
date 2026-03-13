@@ -100,19 +100,6 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== DIVIDERS ===== */
-.divider {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--border-color),
-        transparent
-    );
-    margin: 0;
-}
-
 /* ===== BADGE ===== */
 .badge {
     display: inline-flex;
@@ -131,57 +118,12 @@
     border: 1px solid rgba(105, 153, 182, 0.15);
 }
 
-/* ===== GRID LAYOUTS ===== */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-}
-
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-}
-
-.grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-}
-
-@media (max-width: 1024px) {
-    .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .grid-2,
-    .grid-3,
-    .grid-4 {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* ===== BACKGROUND PATTERNS ===== */
 .bg-grid {
     background-image:
         linear-gradient(rgba(105, 153, 182, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(105, 153, 182, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
-}
-
-.bg-radial {
-    background: radial-gradient(
-        ellipse at 50% 0%,
-        rgba(23, 36, 70, 0.5) 0%,
-        transparent 70%
-    );
 }
 
 /* ===== ICON WRAPPER ===== */

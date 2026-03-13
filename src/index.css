@@ -57,6 +57,7 @@ html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 body {
@@ -394,5 +395,26 @@ p {
     .btn {
         padding: 12px 24px;
         font-size: 0.875rem;
+    }
+}
+
+/* ===== ULTRA SMALL (320–400px) ===== */
+@media (max-width: 400px) {
+    :root {
+        --container-padding: 0 16px;
+        --section-padding: 48px 0;
+    }
+
+    h1 {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
+    }
+
+    h2 {
+        font-size: clamp(1.3rem, 5.5vw, 2rem);
+    }
+
+    .btn {
+        padding: 11px 20px;
+        font-size: 0.83rem;
     }
 }
