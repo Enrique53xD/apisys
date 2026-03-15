@@ -18,6 +18,10 @@ export default defineConfig({
     target: "es2020",
 
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, "index.html"),
+        propuesta: resolve(__dirname, "propuesta/index.html"),
+      },
       output: {
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
